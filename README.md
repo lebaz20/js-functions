@@ -1,4 +1,6 @@
 # js-functions
+[![Build Status](https://scrutinizer-ci.com/g/lebaz20/js-functions/badges/build.png?b=master)](https://scrutinizer-ci.com/g/lebaz20/js-functions/build-status/master)
+
 Js functions using native javascript
 
 ### Array Sum 
