@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Append children</title>
+    </head>
+
+    <body>
+        <!--Testing children append via dummy divs-->
+        <div id="a"> 
+            <div id="b"> 
+            </div> 
+        </div>
+
+        <script>
+            /**
+             * Append div to each and every existing div
+             * @returns {undefined}
+             */
+            function appendChildren() {
+                // get all divs inside document
+                // return is actually a live node list
+                // ,so new divs are expected to be added to allDivs making it endless loop
+                var allDivs = document.getElementsByTagName("div");
+                // get current divs length before adding new divs
+                var currentLength = allDivs.length;
+                // loop on divs currently present inside document -new divs are excluded from this loop-
+                for (var i = 0; i < currentLength; i++) {
+                    // create new empty div
+                    var newDiv = document.createElement("div");
+                    // append the new div to the current div
+                    allDivs[i].appendChild(newDiv);
+                }
+            }
+            // run appendChildren when document content is loaded
+            document.addEventListener('DOMContentLoaded', function () {
+                appendChildren();
+            }, false);
+        </script>
+    </body>
+</html>
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Global scope</title>
+    </head>
+
+    <body>
+        <script>
+            var person = {
+                firstName: 'John',
+                lastName: 'Doe',
+                getFullNameFunction: function () {
+                    return (function () {
+                        // function need to access 'person' variable 
+                        // here via 'this' -refers to the global object not person object- ,'person' is accessible
+                        return this.person.firstName + ' ' + this.person.lastName;
+                    });
+
+                }
+            };
+
+            console.log(person.getFullNameFunction()());
+        </script>
+    </body>
+</html>
+

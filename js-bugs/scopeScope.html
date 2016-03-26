@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Scope scope</title>
+    </head>
+
+    <body>
+        <script>
+            /**
+             * Log loop counter 
+             * @returns {undefined}
+             */
+            function counterLog() {
+                for (var i = 1; i < 6; i++) {
+                    // on each loop cycle, setTimeout will see local scoped 'i'
+                    // instead of looking for 'i' after timeout interval is done
+                    // ,hence loop is finished
+                    (function (localI) {
+                        setTimeout(function () {
+                            console.log(localI);
+                        }, 1000);
+                    })(i);
+                }
+            }
+
+            // run counter when document content is loaded
+            document.addEventListener('DOMContentLoaded', function () {
+                counterLog();
+            }, false);
+        </script>
+    </body>
+</html>
+
